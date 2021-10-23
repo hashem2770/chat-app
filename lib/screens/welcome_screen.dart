@@ -1,0 +1,68 @@
+import 'package:chat_app_hands_on_final/component/RoundedButton.dart';
+import 'package:chat_app_hands_on_final/screens/login_screen.dart';
+import 'package:chat_app_hands_on_final/screens/registration_screen.dart';
+import 'package:flutter/material.dart';
+
+class WelcomeScreen extends StatefulWidget {
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Hero(
+                  tag: 'logo',
+                  child: Container(
+                    child: Image.asset('images/logo.png'),
+                    height: 60.0,
+                  ),
+                ),
+                Text(
+                  'Flash Chat',
+                  style: TextStyle(
+                    fontSize: 45.0,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 48.0,
+            ),
+            RoundedButton(
+              color: Colors.lightBlueAccent,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (r) => LoginScreen(),
+                ),
+              ),
+              title: 'Log in',
+            ),
+            RoundedButton(
+              color: Colors.blueAccent,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (r) => RegistrationScreen(),
+                ),
+              ),
+              title: 'Registration',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
